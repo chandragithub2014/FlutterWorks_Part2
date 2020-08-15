@@ -1,0 +1,77 @@
+Flutter Adavantages:
+
+Compiles to Native:
+   Just in time compile
+      Changes in code can be seen at the same time during development without recompilation.Write the code and see the results in device without recompile
+   Ahead of time compile  
+          Code is compiled during development so the device receives native code.
+   Fast Development
+   Great user experience
+   Single code base for both Android and iOS.
+   
+   
+   To develop app using we use language called Dart
+   Its strongly typed language developed by Google.
+   Dart is :
+   Object Oriented
+   Simple
+   Familiar
+   
+   
+   Github:
+   https://github.com/simoales/flutter
+   
+   
+   
+   Starting Flutter app:
+   Step 1 : Import material package  (import 'package:flutter/material.dart';)
+   main() : Is the entry point    
+   main() { 
+    runApp( 
+	
+	 Center(child : Text ("Hello", TextDirection : ltr),
+	 )
+	);
+   
+   }
+   
+   
+   main() : IS Entry Point
+   runApp() :  Inflates the widget and attaches it to the screen
+   Center and Text are widgets
+   Note: When we use Text , we need to specify direction of the text which is TextDirection
+   
+   
+   
+   MaterialApp : Is container of all widgets. It contains "title" and a "body"
+   Material    : Is a widget that contains properties to set  background of an app.
+   Center      : Is a widget that displays all its child widgets in center
+   Scaffold    : Is used to display appbar and set a title  to it using "Text" widget
+   
+   
+   Basic Widgets used in Flutter:
+   
+   Container
+   Text
+   Row & Column
+   Image
+   Raised Button
+   Alert Dialog
+   Box Constraints
+   Size, Margin and Padding
+   AppBar
+   Scaffold
+   
+   
+ To Load image from Assets:
+ Steps:
+   (1) Create a separate folder in root with some name say "images"
+   (2) Copy image which is png image into that folder.
+   (3) Open pubspec.yaml file and uncomment "assets" section and update accordingly with image name.
+   (4) Take care "assets" section has one Tab space.
+   (5) Go to source file and access image from Assets as below in order to display in UI:
+         AssetImage  burgerAsset = AssetImage('images/burger.png');
+        Image image = new Image(image: burgerAsset,width: 200.0,height: 200.0);
+         
+   
+   
