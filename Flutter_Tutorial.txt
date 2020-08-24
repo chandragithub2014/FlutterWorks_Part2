@@ -72,6 +72,44 @@ Compiles to Native:
    (5) Go to source file and access image from Assets as below in order to display in UI:
          AssetImage  burgerAsset = AssetImage('images/burger.png');
         Image image = new Image(image: burgerAsset,width: 200.0,height: 200.0);
+		
+
+State:
+State is the information that can be read synchronously when the widget is built and might change during the lifetime of the widget.
+
+Difference between stateless and stateful
+
+Stateless:
+Does not have a mutable state. Its immutable
+overrides build() method.
+Use when the UI depends on information in the object itself
+
+Stateful:
+Will have a mutable state
+overrides the createState() method  and returns a state.
+USe when UI change dynamically.
+
+
+Steps to create Stateful widget:
+
+1.  Create a class that extends a Stateful widget, which returns State.
+2.  Create a state class with properties that may change.
+3.  Implement the build() method
+4.  call the setState() method to make changes.
+
+  
+Commands to upgrade pub:(https://subscription.packtpub.com/book/web_development/9781783989621/1/ch01lvl1sec17/solving-problems-when-pub-get-fails)
+flutter pub cache repair
+flutter pub upgrade
+
+In flutter multithreading is acheived using 
+Future asycn await
+
+Future: Future represents an object that gets sometime in the future.
+
+Aync and Await:
+Async and Await allows to write Asynchronous code that looks like synchronous code.
+
          
    
    
