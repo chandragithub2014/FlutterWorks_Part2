@@ -62,6 +62,7 @@ class StudentDetailState extends State {
             TextField(
               controller: titleEditingController,
               style: textStyle,
+              onChanged: (value)=>this.updateTitle(),
               decoration: InputDecoration(
                 labelStyle: textStyle,
                 labelText: "Name",
@@ -74,6 +75,7 @@ class StudentDetailState extends State {
               child: TextField(
                 controller: descriptionEditingController,
                 style: textStyle,
+                onChanged: (value)=>this.updateDescription(),
                 decoration: InputDecoration(
                   labelStyle: textStyle,
                   labelText: "Description",
@@ -90,8 +92,8 @@ class StudentDetailState extends State {
                     child: Text(value));
               }).toList(),
               style: textStyle,
-              value: "Fail",
-              onChanged: (value) => _grade,
+              value: _retriveGrade(studentInfo.grade),
+              onChanged: (value) => updateGrade(value),
             ),
             )
           ],
@@ -106,15 +108,63 @@ class StudentDetailState extends State {
     int result;
     switch(selected){
       case menuSave:
+        save();
         debugPrint("Selected Save");
         break;
       case menuDelete:
            debugPrint("Selected Delete");
+           Navigator.pop(context, true);
+           if(studentInfo.id == null){
+             return;
+           }
+           int result = await dbHelper.deleteTodo(studentInfo.id);
            break;
       case menuBack:
            debugPrint("Selected Back");
            Navigator.pop(context,true);
            break;
+
     }
+  }
+
+  void save(){
+    studentInfo.date = new DateFormat.yMd().format(DateTime.now());
+    if(studentInfo.id != null){
+      //do update
+      dbHelper.updateTodo(studentInfo);
+    }else{
+      dbHelper.insertData(studentInfo);
+    }
+    Navigator.pop(context, true);
+
+  }
+
+  void updateTitle(){
+    studentInfo.name = titleEditingController.text;
+  }
+
+  void updateDescription(){
+    studentInfo.description = descriptionEditingController.text;
+  }
+
+  void updateGrade(String grade){
+    switch(grade){
+      case "Distinction":
+        studentInfo.grade = 1;
+        break;
+      case "FirstClass":
+        studentInfo.grade = 2;
+          break;
+      case "Fail":
+        studentInfo.grade = 3;
+        break;
+     }
+    setState(() {
+      _grade = grade;
+    });
+  }
+
+  String _retriveGrade(int value){
+    return _grades[value-1];
   }
 }

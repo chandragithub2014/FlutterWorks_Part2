@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:first_flutter_app/flutterdb/model/StudentInfo.dart';
 import 'package:first_flutter_app/flutterdb/utils/dbhelper.dart';
 import 'package:first_flutter_app/flutterdb/studentinfo/StudentDetail.dart';
+import 'package:intl/intl.dart';
 
 class StudentList extends StatefulWidget{
   @override
@@ -101,6 +102,11 @@ class StudentListState extends State{
 
      bool result = await Navigator.push(context, 
          MaterialPageRoute(builder: (context) => StudentDetail(studentInfo)),);
+     if(result == true){
+       getData();
+     }
   }
+
+
 
 }
